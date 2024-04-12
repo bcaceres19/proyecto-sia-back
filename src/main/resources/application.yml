@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: sia
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bd-sia
+    username: postgres
+    password: 1234
+server:
+  servlet:
+    context-path: /api/v1
+  port: 8001
+springdoc:
+  packages-to-scan: com.gov.project.sia.controller
+  api-docs:
+    enabled: true
+    path: /v3/api-docs # La URL donde estarán los docs de API (ruta por defecto)
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html # La URL donde estará la UI de Swagger
+  default-consumes-media-type: application/json # Formato de consumo por defecto
+  default-produces-media-type: application/json # Formato de producción por defecto
