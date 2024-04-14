@@ -49,10 +49,4 @@ public class UsuarioEntity {
     @JoinColumn(name = "id_rol_fk", nullable = false)
     private RolEntity idRolFk;
 
-    @OneToMany(mappedBy = "idUsuarioFk")
-    private Set<PedidoEntity> pedidos = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "idUsuarioFk")
-    private Set<VentaEntity> ventas = new LinkedHashSet<>();
-
 }

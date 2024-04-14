@@ -19,14 +19,12 @@ public class InventarioDto {
 
     private Integer idInventario;
 
-    private Long precioProductoOriginal;
+    private Double precioProductoInventario;
 
-    private Integer stockProductoOriginal;
+    private Integer stockProductoInventario;
 
-    private String nombreProductoOriginal;
+    private String nombreProductoInventario;
 
     private TipoProductoDto idTipoProductoFk;
-
-    private Set<ProductoDto> productos = new LinkedHashSet<>();
 
 }

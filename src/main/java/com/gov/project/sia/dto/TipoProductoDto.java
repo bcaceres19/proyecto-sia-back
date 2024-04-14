@@ -1,6 +1,7 @@
 package com.gov.project.sia.dto;
 
 import com.gov.project.sia.entity.InventarioEntity;
+import com.gov.project.sia.utils.enums.EstadoTipoProductoEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -19,8 +20,6 @@ public class TipoProductoDto {
 
     private String nombreTipoProducto;
 
-    private String estadoTipoProducto;
-
-    private Set<InventarioDto> inventarios = new LinkedHashSet<>();
+    private EstadoTipoProductoEnum estadoTipoProducto;
 
 }

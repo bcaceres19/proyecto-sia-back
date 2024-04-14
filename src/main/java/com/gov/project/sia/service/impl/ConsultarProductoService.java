@@ -1,32 +1,29 @@
 package com.gov.project.sia.service.impl;
 
-import com.gov.project.sia.dto.ArbolDto;
+import com.gov.project.sia.dto.OrquestadorDto;
+import com.gov.project.sia.dto.ProductoDto;
+import com.gov.project.sia.repository.ProductoRepository;
 import com.gov.project.sia.service.IConsultarProductoService;
+import com.gov.project.sia.utils.enums.TipoOrdenamientoEnum;
+import com.gov.project.sia.utils.mapper.ProductoMapper;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ConsultarProductoService implements IConsultarProductoService {
 
+    private final ProductoRepository productoRepository;
+
+    private final ProductoMapper productoMapper;
 
     @Override
-    public void consultarProductos() {
-        ArbolDto arbolDto = new ArbolDto();
-        arbolDto.insertar(1);
-        arbolDto.insertar(10);
-        arbolDto.insertar(8);
-        arbolDto.insertar(54);
-        arbolDto.insertar(15);
-        arbolDto.insertar(50);
-        arbolDto.insertar(53);
-        System.out.println("INORDEN: ");
-        arbolDto.dispararInorden();
-        System.out.println("POSTORDEN: ");
-        arbolDto.dispararPostOrden();
-        System.out.println("PREORDEN: ");
-        arbolDto.dispararPreorden();
-
+    public List<ProductoDto> consultarProductos() {
+        return productoRepository.buscarProductos().stream().map(productoMapper::productoEntityToProductoDto).toList();
     }
 
 

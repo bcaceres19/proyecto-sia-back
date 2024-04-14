@@ -2,6 +2,7 @@ package com.gov.project.sia.dto;
 
 import com.gov.project.sia.entity.InventarioEntity;
 import com.gov.project.sia.entity.VentaEntity;
+import com.gov.project.sia.utils.enums.EstadoProductoEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,12 +19,13 @@ public class ProductoDto {
 
     private String codigoProducto;
 
-    private LocalDate fechaVencimiento;
+    private LocalDate fechaVencimientoProducto;
 
-    private String estadoProducto;
+    private EstadoProductoEnum estadoProducto;
 
-    private InventarioDto idInventarioEntityFk;
+    private InventarioDto idInventarioFk;
 
-    private Set<VentaDto> ventas = new LinkedHashSet<>();
+    private Integer posicionInsercion;
+
 
 }

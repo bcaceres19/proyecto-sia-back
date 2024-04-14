@@ -22,8 +22,8 @@ public class ProductoEntity {
     private String codigoProducto;
 
     @NotNull
-    @Column(name = "fecha_vencimiento", nullable = false)
-    private LocalDate fechaVencimiento;
+    @Column(name = "fecha_vencimiento_producto", nullable = false)
+    private LocalDate fechaVencimientoProducto;
 
     @NotNull
     @Column(name = "estado_producto", nullable = false, length = Integer.MAX_VALUE)

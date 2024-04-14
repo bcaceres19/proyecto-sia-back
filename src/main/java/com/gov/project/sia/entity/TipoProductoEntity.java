@@ -31,7 +31,4 @@ public class TipoProductoEntity {
     @Column(name = "estado_tipo_producto", nullable = false, length = Integer.MAX_VALUE)
     private EstadoTipoProductoEnum estadoTipoProducto;
 
-    @OneToMany(mappedBy = "idTipoProductoFk")
-    private Set<InventarioEntity> inventarios = new LinkedHashSet<>();
-
 }

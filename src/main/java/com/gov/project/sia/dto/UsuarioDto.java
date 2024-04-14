@@ -31,8 +31,6 @@ public class UsuarioDto {
 
     private RolDto idRolFk;
 
-    private Set<PedidoDto> pedidos = new LinkedHashSet<>();
 
-    private Set<VentaDto> ventaEntities = new LinkedHashSet<>();
 
 }

@@ -1,10 +1,13 @@
 spring:
+  cache:
+    type: none
   application:
     name: sia
   datasource:
-    url: jdbc:postgresql://localhost:5432/bd-sia
+    default_schema: sia
     username: postgres
-    password: 1234
+    password: 123456789
+    url: jdbc:postgresql://localhost:5432/postgres
 server:
   servlet:
     context-path: /api/v1

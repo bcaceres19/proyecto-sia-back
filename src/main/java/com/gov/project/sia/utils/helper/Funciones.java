@@ -1,5 +1,7 @@
 package com.gov.project.sia.utils.helper;
 
+import com.gov.project.sia.dto.InventarioDto;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -19,6 +21,8 @@ public class Funciones {
                 return (T) Integer.valueOf(obj.toString());
             }else if (clazz.equals(Double.class)){
                 return (T) Double.valueOf(obj.toString());
+            }else if (clazz.equals(InventarioDto.class)){
+                return (T) (InventarioDto) obj;
             }
         } catch (ClassCastException e) {
             throw new ClassCastException("Error de conversión de tipos");

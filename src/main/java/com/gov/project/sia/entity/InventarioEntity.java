@@ -1,5 +1,6 @@
 package com.gov.project.sia.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -15,6 +16,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "inventario")
+@Schema(name = "sia")
 public class InventarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,24 +25,21 @@ public class InventarioEntity {
     private Integer idInventario;
 
     @NotNull
-    @Column(name = "precio_producto_original", nullable = false, precision = 10, scale = 2)
-    private Long precioProductoOriginal;
+    @Column(name = "precio_producto_inventario", nullable = false, precision = 10, scale = 2)
+    private Long precioProductoInventario;
 
     @NotNull
-    @Column(name = "stock_producto_original", nullable = false)
-    private Integer stockProductoOriginal;
+    @Column(name = "stock_producto_inventario", nullable = false)
+    private Integer stockProductoInventario;
 
     @Size(max = 50)
     @NotNull
-    @Column(name = "nombre_producto_original", nullable = false, length = 50)
-    private String nombreProductoOriginal;
+    @Column(name = "nombre_producto_inventario", nullable = false, length = 50)
+    private String nombreProductoInventario;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_tipo_producto_fk", nullable = false)
     private TipoProductoEntity idTipoProductoFk;
-
-    @OneToMany(mappedBy = "idInventarioFk")
-    private Set<ProductoEntity> productos = new LinkedHashSet<>();
 
 }

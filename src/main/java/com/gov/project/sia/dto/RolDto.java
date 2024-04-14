@@ -1,6 +1,7 @@
 package com.gov.project.sia.dto;
 
 import com.gov.project.sia.entity.UsuarioEntity;
+import com.gov.project.sia.utils.enums.EstadoRolEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -19,8 +20,6 @@ public class RolDto {
 
     private String nombreRol;
 
-    private String estadoRol;
-
-    private Set<UsuarioDto> usuarios = new LinkedHashSet<>();
+    private EstadoRolEnum estadoRol;
 
 }

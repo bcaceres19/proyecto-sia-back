@@ -31,7 +31,4 @@ public class RolEntity {
     @Column(name = "estado_rol", nullable = false, length = Integer.MAX_VALUE)
     private EstadoRolEnum estadoRol;
 
-    @OneToMany(mappedBy = "idRolFk")
-    private Set<UsuarioEntity> usuarios = new LinkedHashSet<>();
-
 }

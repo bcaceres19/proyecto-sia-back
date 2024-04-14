@@ -37,14 +37,12 @@ public class VentaEntity {
 
     @NotNull
     @Column(name = "precio_total_venta", nullable = false, precision = 10, scale = 2)
-    private Long precioTotalVenta;
+    private Double precioTotalVenta;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_usuario_fk", nullable = false)
     private UsuarioEntity idUsuarioFk;
 
-    @OneToMany(mappedBy = "idVentaFk")
-    private Set<PedidoEntity> pedidos = new LinkedHashSet<>();
 
 }
