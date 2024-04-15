@@ -32,8 +32,13 @@ create table inventario(
                            stock_producto_inventario int not null,
                            nombre_producto_inventario varchar(50) not null,
                            id_tipo_producto_fk int not null,
+                           url_imagen_producto varchar(255),
                            foreign key(id_tipo_producto_fk) references tipo_producto(id_tipo_producto)
 );
+
+
+
+
 
 create table producto(
                          codigo_producto varchar(10) primary key,
@@ -147,3 +152,26 @@ INSERT INTO inventario (precio_producto_inventario, stock_producto_inventario, n
                                                                                                                                     (150.00, 20, 'Sofá', 5),               -- tipo_producto: Muebles
                                                                                                                                     (8.00, 50, 'Martillo', 6),             -- tipo_producto: Herramientas
                                                                                                                                     (200.00, 15, 'Sistema de sonido', 1);  -- tipo_producto: Electrónicos
+
+select * from venta_producto vp;
+
+select * from pedido p inner join venta v on p.id_venta_fk = v.id_venta
+                       inner join venta_producto vp on vp.id_venta_fk = v.id_venta
+                       inner join producto p2 on vp.id_producto_fk = p2.codigo_producto;
+
+select p.codigo_producto, p.fecha_vencimiento_producto, p.precio_producto, p.estado_producto from venta_producto vp
+                                                                                                      inner join producto p ON vp.id_producto_fk = p.codigo_producto where p.codigo_producto = :codigoProducto;
+
+select * from producto p;
+
+select
+    p.codigo_producto,
+    p.fecha_vencimiento_producto,
+    p.precio_producto,
+    p.estado_producto
+from venta_producto vp
+         inner join producto p
+                    ON vp.id_producto_fk = p.codigo_producto
+
+select p.codigo_producto, p.precio_producto , p.estado_producto, i.precio_producto_inventario, p.precio_producto, p.fecha_vencimiento_producto, i.nombre_producto_inventario
+from producto p inner join inventario i on p.id_inventario_fk  = i.id_inventario;
