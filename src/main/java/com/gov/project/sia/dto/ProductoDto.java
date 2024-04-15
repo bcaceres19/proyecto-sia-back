@@ -29,5 +29,7 @@ public class ProductoDto {
 
     private Integer posicionInsercion;
 
+    private String urlImagenProducto;
+
 
 }

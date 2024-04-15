@@ -10,13 +10,17 @@ import java.util.List;
 @Repository
 public interface ProductoRepository extends JpaRepository<ProductoEntity,String> {
 
-    @Query("""
-        select p.codigoProducto, 
-        p.idInventarioFk.nombreProductoInventario,
-        p.estadoProducto, 
-        p.idInventarioFk.precioProductoInventario,
-        p.fechaVencimientoProducto from ProductoEntity p
-    """)
-    List<ProductoEntity> buscarProductos();
+    @Query(value = """
+            select p.codigo_producto,
+             p.estado_producto,
+              i.precio_producto_inventario, 
+              p.precio_producto, 
+              p.fecha_vencimiento_producto,
+               i.nombre_producto_inventario,
+               i.url_imagen_producto
+            from sia.producto p inner join 
+            sia.inventario i on p.id_inventario_fk  = i.id_inventario;
+    """, nativeQuery = true)
+    List<Object[]> buscarProductos();
 
 }

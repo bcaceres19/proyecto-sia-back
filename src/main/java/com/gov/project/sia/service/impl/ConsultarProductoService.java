@@ -2,6 +2,7 @@ package com.gov.project.sia.service.impl;
 
 import com.gov.project.sia.dto.OrquestadorDto;
 import com.gov.project.sia.dto.ProductoDto;
+import com.gov.project.sia.dto.ProductoRespuestaDto;
 import com.gov.project.sia.repository.ProductoRepository;
 import com.gov.project.sia.service.IConsultarProductoService;
 import com.gov.project.sia.utils.enums.TipoOrdenamientoEnum;
@@ -22,8 +23,8 @@ public class ConsultarProductoService implements IConsultarProductoService {
     private final ProductoMapper productoMapper;
 
     @Override
-    public List<ProductoDto> consultarProductos() {
-        return productoRepository.buscarProductos().stream().map(productoMapper::productoEntityToProductoDto).toList();
+    public List<ProductoRespuestaDto> consultarProductos() {
+        return productoRepository.buscarProductos().stream().map(productoMapper::objetctToProductoRespuesta).toList();
     }
 
 
