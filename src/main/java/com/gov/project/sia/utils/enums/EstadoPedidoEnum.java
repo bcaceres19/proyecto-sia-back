@@ -2,10 +2,10 @@ package com.gov.project.sia.utils.enums;
 
 public enum EstadoPedidoEnum {
 
-    ACEPTADO("A"),
-    PENDIENTE("P"),
-    VENCIDO("V"),
-    RECHAZADO("R");
+    A("ACEPTADO"),
+    P("PENDIENTE"),
+    V("VENCIDO"),
+    R("RECHAZADO");
 
     private final String descripcion;
 

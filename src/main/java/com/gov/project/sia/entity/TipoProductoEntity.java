@@ -1,6 +1,7 @@
 package com.gov.project.sia.entity;
 
 import com.gov.project.sia.utils.enums.EstadoTipoProductoEnum;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "tipo_producto")
+@Table(name = "tipo_producto", schema = "sia")
 public class TipoProductoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,7 @@ public class TipoProductoEntity {
 
     @NotNull
     @Column(name = "estado_tipo_producto", nullable = false, length = Integer.MAX_VALUE)
+    @Enumerated(EnumType.STRING)
     private EstadoTipoProductoEnum estadoTipoProducto;
 
 }

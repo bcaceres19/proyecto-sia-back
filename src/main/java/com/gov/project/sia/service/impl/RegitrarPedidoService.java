@@ -1,11 +1,8 @@
 package com.gov.project.sia.service.impl;
 
 import com.gov.project.sia.dto.PedidoDto;
-import com.gov.project.sia.dto.UsuarioDto;
 import com.gov.project.sia.dto.VentaDto;
-import com.gov.project.sia.dto.VentaProductoDto;
 import com.gov.project.sia.repository.PedidoRepository;
-import com.gov.project.sia.repository.VentaPedidoRepository;
 import com.gov.project.sia.service.IRegistrarPedidoService;
 import com.gov.project.sia.utils.mapper.PedidoMapper;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +12,9 @@ import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.util.List;
 
-import static com.gov.project.sia.utils.enums.EstadoPedidoEnum.ACEPTADO;
-import static com.gov.project.sia.utils.enums.EstadoPedidoEnum.PENDIENTE;
+
+import static com.gov.project.sia.utils.enums.EstadoPedidoEnum.A;
+import static com.gov.project.sia.utils.enums.EstadoPedidoEnum.P;
 import static com.gov.project.sia.utils.helper.Constantes.*;
 
 @Service
@@ -31,7 +29,7 @@ public class RegitrarPedidoService implements IRegistrarPedidoService {
     @Override
     public void aceptarPedido(List<PedidoDto> pedidos) {
         for(PedidoDto pedido : pedidos){
-            pedido.setEstadoPedido(ACEPTADO);
+            pedido.setEstadoPedido(A);
             pedidoRepository.save(pedidoMapper.pedidoDtoToPedidoEntity(pedido));
         }
     }
@@ -48,7 +46,7 @@ public class RegitrarPedidoService implements IRegistrarPedidoService {
                 }
             }
             pedidoDto.setCodigoPedido(codigo);
-            pedidoDto.setEstadoPedido(PENDIENTE);
+            pedidoDto.setEstadoPedido(P);
             pedidoDto.setFechaInicioPedido(LocalDate.now());
             pedidoDto.setFechaVencimientoPedido(LocalDate.now().plusWeeks(3L));
             pedidoDto.setIdUsuarioFk(venta.getIdUsuarioFk());

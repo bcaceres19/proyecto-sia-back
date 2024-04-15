@@ -4,7 +4,6 @@ spring:
   application:
     name: sia
   datasource:
-    default_schema: sia
     username: postgres
     password: 123456789
     url: jdbc:postgresql://localhost:5432/postgres

@@ -1,10 +1,9 @@
 package com.gov.project.sia.controller;
 
-import com.gov.project.sia.dto.ProductoDto;
-import com.gov.project.sia.dto.UsuarioDto;
 import com.gov.project.sia.dto.VentaDto;
 import com.gov.project.sia.dto.VentaInDto;
-import com.gov.project.sia.service.IConsultaVentaService;
+import com.gov.project.sia.dto.VentaProductoDto;
+import com.gov.project.sia.service.IConsultaVentaProductoService;
 import com.gov.project.sia.service.IRegistrarVentaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,19 +15,17 @@ import java.util.List;
 @RequestMapping("/venta")
 @RequiredArgsConstructor
 public class VentaController {
+    private final IConsultaVentaProductoService iConsultaVentaProductoService;
+    private final IRegistrarVentaService iRegistrarVentaService;
 
-    private IConsultaVentaService iConsultaVentaService;
-
-    private IRegistrarVentaService iRegistrarVentaService;
-
-    @GetMapping("/consultar-sin-confirmar")
-    public ResponseEntity<List<VentaDto>> consultarVentasSinConfirmar(@RequestParam("idUsuario") Integer idUsuario){
-        return  ResponseEntity.ok(iConsultaVentaService.consultaVentaUsuarioSinConfirmar(idUsuario));
+   @GetMapping("/consultar-sin-confirmar")
+    public ResponseEntity<List<VentaProductoDto>> consultarVentasSinConfirmar(@RequestParam("idUsuario") Integer idUsuario){
+        return  ResponseEntity.ok(iConsultaVentaProductoService.consultaVentaUsuarioSinConfirmar(idUsuario));
     }
 
     @GetMapping("/consultar-confirmado")
-    public ResponseEntity<List<VentaDto>> consultarVentasConfirmadas(@RequestParam("idUsuario") Integer idUsuario){
-        return  ResponseEntity.ok(iConsultaVentaService.consultaVentaUsuarioConfirmar(idUsuario));
+    public ResponseEntity<List<VentaProductoDto>> consultarVentasConfirmadas(@RequestParam("idUsuario") Integer idUsuario){
+        return  ResponseEntity.ok(iConsultaVentaProductoService.consultaVentaUsuarioConfirmar(idUsuario));
     }
 
     @PostMapping("/crear-venta-sin-pedido")

@@ -2,9 +2,9 @@ package com.gov.project.sia.utils.enums;
 
 public enum EstadoProductoEnum {
 
-    FRESCO("F"),
-    VENCIDO("V"),
-    POR_VENCER("P");
+    F("FRESCO"),
+    V("VENCIDO"),
+    P("POR_VENCER");
 
     private final String descripcion;
 

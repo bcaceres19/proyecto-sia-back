@@ -19,6 +19,8 @@ public class ProductoDto {
 
     private String codigoProducto;
 
+    private Double precioProducto;
+
     private LocalDate fechaVencimientoProducto;
 
     private EstadoProductoEnum estadoProducto;

@@ -1,6 +1,7 @@
 package com.gov.project.sia.utils.mapper;
 
 import com.gov.project.sia.dto.PedidoDto;
+import com.gov.project.sia.dto.RespuestaPedidoDto;
 import com.gov.project.sia.dto.VentaProductoDto;
 import com.gov.project.sia.entity.PedidoEntity;
 import com.gov.project.sia.entity.VentaProductoEntity;
@@ -11,5 +12,8 @@ public interface PedidoMapper {
 
     PedidoEntity pedidoDtoToPedidoEntity(PedidoDto pedidoDto);
 
+    default RespuestaPedidoDto objectToRespuestaPedidoDto(Object object){
+        return (RespuestaPedidoDto) object;
+    }
 
 }

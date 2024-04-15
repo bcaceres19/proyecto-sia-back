@@ -15,8 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "inventario")
-@Schema(name = "sia")
+@Table(name = "inventario", schema = "sia")
 public class InventarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +24,8 @@ public class InventarioEntity {
     private Integer idInventario;
 
     @NotNull
-    @Column(name = "precio_producto_inventario", nullable = false, precision = 10, scale = 2)
-    private Long precioProductoInventario;
+    @Column(name = "precio_producto_inventario", nullable = false)
+    private Double precioProductoInventario;
 
     @NotNull
     @Column(name = "stock_producto_inventario", nullable = false)

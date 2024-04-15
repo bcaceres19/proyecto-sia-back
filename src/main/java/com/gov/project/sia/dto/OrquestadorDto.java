@@ -13,6 +13,8 @@ public class OrquestadorDto {
 
     private AyudanteOrquestadorDto inicial;
 
+    private Integer tamanioPila;
+
     public OrquestadorDto() {
         this.inicial = null;
     }

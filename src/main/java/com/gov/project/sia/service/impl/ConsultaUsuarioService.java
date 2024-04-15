@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ConsultaUsuarioService implements IConsultaUsuarioService {
 
-    @Autowired
-    private  UsuarioRepository usuarioRepository;
+    private final  UsuarioRepository usuarioRepository;
 
     @Override
     public Boolean existeUsuario(String email, String password) throws ErrorGeneralException {

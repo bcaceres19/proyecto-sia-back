@@ -2,8 +2,8 @@ package com.gov.project.sia.utils.enums;
 
 public enum EstadoTipoProductoEnum {
 
-    HABILITADO("H"),
-    INHABILITADO("I");
+    H("HABILITADO"),
+    I("INHABILITADO");
 
     private final String descripcion;
 

@@ -1,6 +1,7 @@
 package com.gov.project.sia.entity;
 
 import com.gov.project.sia.utils.enums.EstadoRolEnum;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "rol")
+@Table(name = "rol", schema = "sia")
 public class RolEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,7 @@ public class RolEntity {
 
     @NotNull
     @Column(name = "estado_rol", nullable = false, length = Integer.MAX_VALUE)
+    @Enumerated(EnumType.STRING)
     private EstadoRolEnum estadoRol;
 
 }

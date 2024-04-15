@@ -11,5 +11,10 @@ public interface VentaProductoMapper {
 
     VentaProductoEntity ventaProductoDtoToVentaProductoEntity(VentaProductoDto ventaProductoDto);
 
+    VentaProductoDto ventaProductoEntityToventaProductoDto(VentaProductoEntity ventaProductoEntity);
 
+
+    default VentaProductoDto objectToVentaDto(Object object){
+        return (VentaProductoDto) object;
+    }
 }

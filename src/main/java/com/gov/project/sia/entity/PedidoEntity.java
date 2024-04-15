@@ -1,6 +1,7 @@
 package com.gov.project.sia.entity;
 
 import com.gov.project.sia.utils.enums.EstadoPedidoEnum;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "pedido")
+@Table(name = "pedido", schema = "sia")
 public class PedidoEntity {
     @Id
     @Size(max = 10)
@@ -21,6 +22,7 @@ public class PedidoEntity {
 
     @NotNull
     @Column(name = "estado_pedido", nullable = false, length = Integer.MAX_VALUE)
+    @Enumerated(EnumType.STRING)
     private EstadoPedidoEnum estadoPedido;
 
     @NotNull

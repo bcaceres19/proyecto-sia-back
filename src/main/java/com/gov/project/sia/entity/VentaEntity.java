@@ -1,8 +1,10 @@
 package com.gov.project.sia.entity;
 
 import com.gov.project.sia.utils.enums.EstadoVentaEnum;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
@@ -12,10 +14,9 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
 @Entity
-@Table(name = "venta")
+@Table(name = "venta", schema = "sia")
 public class VentaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,7 @@ public class VentaEntity {
 
     @NotNull
     @Column(name = "estado_venta", nullable = false, length = Integer.MAX_VALUE)
+    @Enumerated(EnumType.STRING)
     private EstadoVentaEnum estadoVenta;
 
     @NotNull
@@ -36,7 +38,7 @@ public class VentaEntity {
     private LocalDate fechaVenta;
 
     @NotNull
-    @Column(name = "precio_total_venta", nullable = false, precision = 10, scale = 2)
+    @Column(name = "precio_total_venta", nullable = false)
     private Double precioTotalVenta;
 
     @NotNull
