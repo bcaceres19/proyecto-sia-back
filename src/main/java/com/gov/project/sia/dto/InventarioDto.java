@@ -27,4 +27,6 @@ public class InventarioDto {
 
     private TipoProductoDto idTipoProductoFk;
 
+    private String urlImagenProducto;
+
 }

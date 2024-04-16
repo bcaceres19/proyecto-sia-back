@@ -47,4 +47,5 @@ public class VentaEntity {
     private UsuarioEntity idUsuarioFk;
 
 
+
 }

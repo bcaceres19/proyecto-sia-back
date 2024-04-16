@@ -14,15 +14,15 @@ public interface PedidoRepository extends JpaRepository<PedidoEntity,String> {
     Boolean existsByCodigoPedido(String codigoPedido);
 
     @Query(value = """
-        SELECT new com.gov.project.sia.dto.RespuestaPedidoDto(
+        SELECT distinct new com.gov.project.sia.dto.RespuestaPedidoDto(
         pe.codigoPedido,
         pe.fechaInicioPedido,
          pe.fechaVencimientoPedido,
           v.cantidadVenta,
            v.precioTotalVenta ) FROM VentaProductoEntity vp
         inner join VentaEntity v on vp.idVentaFk = v inner join ProductoEntity p
-        on vp.idProductoFk = p inner join PedidoEntity pe 
-        on vp.idVentaFk = pe.idVentaFk where pe.estadoPedido = 'P'
+        on vp.idProductoFk = p inner join PedidoEntity pe
+        on vp.idVentaFk = pe.idVentaFk where pe.estadoPedido = 'P' order by pe.codigoPedido asc
     """)
     List<RespuestaPedidoDto> buscarPedidosPendientes();
 

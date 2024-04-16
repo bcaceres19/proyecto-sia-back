@@ -41,4 +41,6 @@ public class InventarioEntity {
     @JoinColumn(name = "id_tipo_producto_fk", nullable = false)
     private TipoProductoEntity idTipoProductoFk;
 
+    @Column(name = "url_imagen_producto")
+    private String urlImagenProducto;
 }

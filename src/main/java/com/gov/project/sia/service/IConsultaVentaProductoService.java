@@ -2,14 +2,15 @@ package com.gov.project.sia.service;
 
 import com.gov.project.sia.dto.VentaDto;
 import com.gov.project.sia.dto.VentaProductoDto;
+import com.gov.project.sia.dto.VentaProductoRespuestaDto;
 
 import java.util.List;
 
 public interface IConsultaVentaProductoService {
 
-    List<VentaProductoDto> consultaVentaUsuarioSinConfirmar(Integer idUsuario);
+    VentaProductoRespuestaDto consultaVentaUsuarioSinConfirmar(Integer idUsuario);
 
-    List<VentaProductoDto> consultaVentaUsuarioConfirmar(Integer idUsuario);
+    VentaProductoRespuestaDto consultaVentaUsuarioConfirmar(Integer idUsuario);
 
 
 }

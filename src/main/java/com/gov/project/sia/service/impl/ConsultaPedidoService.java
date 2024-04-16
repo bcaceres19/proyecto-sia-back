@@ -29,7 +29,7 @@ public class ConsultaPedidoService implements IConsultaPedidoService {
         ColaDto colaDto = new ColaDto();
         int indice = 1;
         for(RespuestaPedidoDto v : colaSinOrganizar){
-            v.setProductos(ventaProductoRepository.buscarProductosVentas(v.getCodigoPedido()).stream().map(productoMapper::objectToProducto).toList());
+            v.setProductos(ventaProductoRepository.buscarProductosVentas(v.getCodigoPedido()).stream().map(productoMapper::objectToProductoInventario).toList());
             colaDto.insertar(indice, v);
             indice++;
         }

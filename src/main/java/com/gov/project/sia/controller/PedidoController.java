@@ -1,6 +1,7 @@
 package com.gov.project.sia.controller;
 
 
+import com.gov.project.sia.dto.RespuestaGeneralDto;
 import com.gov.project.sia.dto.RespuestaPedidoDto;
 import com.gov.project.sia.service.IConsultaPedidoService;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +21,12 @@ public class PedidoController {
     private final IConsultaPedidoService iConsultaPedidoService;
 
     @GetMapping("/consultar-pedidos-pendientes")
-    public ResponseEntity<List<RespuestaPedidoDto>> consultarVentasSinConfirmar(){
-        return  ResponseEntity.ok(iConsultaPedidoService.buscarPedidosEstadoPendientes());
+    public ResponseEntity<RespuestaGeneralDto> consultarVentasSinConfirmar(){
+        RespuestaGeneralDto respuesta = new RespuestaGeneralDto();
+        respuesta.setStatus(Boolean.TRUE);
+        respuesta.setListaData(iConsultaPedidoService.buscarPedidosEstadoPendientes());
+        respuesta.setMensaje("Se consulto correctamente");
+        return  ResponseEntity.ok(respuesta);
     }
 
 }

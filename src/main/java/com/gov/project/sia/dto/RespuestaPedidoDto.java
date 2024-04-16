@@ -19,7 +19,7 @@ public class RespuestaPedidoDto {
 
     private Double valorTotal;
 
-    private List<ProductoDto> productos;
+    private List<ProductoInventarioDto> productos;
 
     public RespuestaPedidoDto(String codigoPedido,
                               LocalDate fechaInicioPedido,

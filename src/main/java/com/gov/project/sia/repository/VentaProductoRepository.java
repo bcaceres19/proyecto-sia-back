@@ -16,22 +16,39 @@ import java.util.List;
 @Repository
 public interface VentaProductoRepository extends JpaRepository<VentaProductoEntity, Integer> {
 
-    List<VentaProductoEntity> findAllByIdVentaFk_IdUsuarioFk_IdUsuarioAndIdVentaFk_EstadoVentaOrderByIdVentaFk_IdVentaAsc(Integer idUsuario, EstadoVentaEnum estado);
+    @Query("""
+        SELECT new com.gov.project.sia.dto.VentaProductoDto(
+        vp.idVentaProducto,
+        vp.idVentaFk,
+        vp.idProductoFk
+         ) from VentaProductoEntity vp  inner join
+         VentaEntity i on vp.idVentaFk.idVenta = i.idVenta
+         where i.idUsuarioFk.idUsuario = :idUsuario AND i.estadoVenta = 'P'
+          order by i.idVenta asc
+    """)
+    List<VentaProductoDto> buscarVentasNuevasUsuario(@Param("idUsuario") Integer idUsuario);
+
 
     @Query(value = """
         select
-            p.codigo_producto,
-            p.fecha_vencimiento_producto,
-            p.precio_producto,
-            p.estado_producto
-        from sia.venta_producto vp
-        inner join sia.producto p 
-        ON vp.id_producto_fk = p.codigo_producto
+                    p.codigo_producto,
+                    p.fecha_vencimiento_producto,
+                    p.precio_producto,
+                    p.estado_producto,
+                    i.nombre_producto_inventario,
+                    i.stock_producto_inventario,
+                    i.precio_producto_inventario
+                from sia.venta_producto vp
+                inner join sia.producto p
+                ON vp.id_producto_fk = p.codigo_producto inner join
+               sia.inventario i on p.id_inventario_fk = i.id_inventario;
+        
     """, nativeQuery = true)
     List<Object[]> buscarProductosVentas(@Param("codigoProducto") String codigoProducto);
 
     @Query("""
         SELECT new com.gov.project.sia.dto.VentaProductoDto(
+        vp.idVentaProducto,
         vp.idVentaFk,
         vp.idProductoFk
          ) from VentaEntity i inner join

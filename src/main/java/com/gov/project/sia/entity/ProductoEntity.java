@@ -40,7 +40,6 @@ public class ProductoEntity {
     @JoinColumn(name = "id_inventario_fk", nullable = false)
     private InventarioEntity idInventarioFk;
 
-    @Column(name = "url_imagen_producto")
-    private String urlImagenProducto;
+
 
 }

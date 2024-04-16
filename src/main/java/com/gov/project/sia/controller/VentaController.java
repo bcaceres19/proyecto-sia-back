@@ -1,8 +1,6 @@
 package com.gov.project.sia.controller;
 
-import com.gov.project.sia.dto.VentaDto;
-import com.gov.project.sia.dto.VentaInDto;
-import com.gov.project.sia.dto.VentaProductoDto;
+import com.gov.project.sia.dto.*;
 import com.gov.project.sia.service.IConsultaVentaProductoService;
 import com.gov.project.sia.service.IRegistrarVentaService;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +17,16 @@ public class VentaController {
     private final IRegistrarVentaService iRegistrarVentaService;
 
    @GetMapping("/consultar-sin-confirmar")
-    public ResponseEntity<List<VentaProductoDto>> consultarVentasSinConfirmar(@RequestParam("idUsuario") Integer idUsuario){
-        return  ResponseEntity.ok(iConsultaVentaProductoService.consultaVentaUsuarioSinConfirmar(idUsuario));
+    public ResponseEntity<RespuestaGeneralDto> consultarVentasSinConfirmar(@RequestParam("idUsuario") Integer idUsuario){
+       RespuestaGeneralDto respuesta = new RespuestaGeneralDto();
+       respuesta.setStatus(Boolean.TRUE);
+       respuesta.setData(iConsultaVentaProductoService.consultaVentaUsuarioSinConfirmar(idUsuario));
+       respuesta.setMensaje("Se consulto correctamente");
+       return  ResponseEntity.ok(respuesta);
     }
 
     @GetMapping("/consultar-confirmado")
-    public ResponseEntity<List<VentaProductoDto>> consultarVentasConfirmadas(@RequestParam("idUsuario") Integer idUsuario){
+    public ResponseEntity<VentaProductoRespuestaDto> consultarVentasConfirmadas(@RequestParam("idUsuario") Integer idUsuario){
         return  ResponseEntity.ok(iConsultaVentaProductoService.consultaVentaUsuarioConfirmar(idUsuario));
     }
 

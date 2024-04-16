@@ -15,7 +15,7 @@ public class VentaProductoEntity {
 
     @Id
     @Column(name = "id_venta_producto")
-    private Integer codigoProducto;
+    private Integer idVentaProducto;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

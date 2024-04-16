@@ -2,6 +2,7 @@ package com.gov.project.sia.utils.mapper;
 
 import com.gov.project.sia.dto.InventarioDto;
 import com.gov.project.sia.dto.ProductoDto;
+import com.gov.project.sia.dto.ProductoInventarioDto;
 import com.gov.project.sia.dto.ProductoRespuestaDto;
 import com.gov.project.sia.entity.InventarioEntity;
 import com.gov.project.sia.entity.ProductoEntity;
@@ -35,6 +36,18 @@ public interface ProductoMapper {
         productoRespuestaDto.setNombreProducto(Funciones.checkType(objeto[5], String.class));
         productoRespuestaDto.setImagenProducto(Funciones.checkType(objeto[6], String.class));
         return productoRespuestaDto;
+    }
+
+    default ProductoInventarioDto objectToProductoInventario(Object[] objeto){
+        ProductoInventarioDto productoInventarioDto = new ProductoInventarioDto();
+        productoInventarioDto.setCodigoProducto(Funciones.checkType(objeto[0], String.class));
+        productoInventarioDto.setFechaVencimientoProducto(Funciones.checkType(objeto[1], LocalDate.class));
+        productoInventarioDto.setPrecioProducto(Funciones.checkType(objeto[2], Double.class));
+        productoInventarioDto.setEstadoProducto(Funciones.checkType(objeto[3], EstadoProductoEnum.class));
+        productoInventarioDto.setNombreProductoInventario(Funciones.checkType(objeto[4], String.class));
+        productoInventarioDto.setStockProductoInventario(Funciones.checkType(objeto[5], String.class));
+        productoInventarioDto.setPrecioProductoInventario(Funciones.checkType(objeto[6], Double.class));
+        return productoInventarioDto;
     }
 
 }

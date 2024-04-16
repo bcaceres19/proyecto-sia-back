@@ -1,6 +1,8 @@
 package com.gov.project.sia.utils.helper;
 
 import com.gov.project.sia.dto.InventarioDto;
+import com.gov.project.sia.utils.enums.EstadoProductoEnum;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -23,6 +25,10 @@ public class Funciones {
                 return (T) Double.valueOf(obj.toString());
             }else if (clazz.equals(InventarioDto.class)){
                 return (T) (InventarioDto) obj;
+            } else if(clazz.equals(LocalDate.class)){
+                return (T) LocalDate.parse(obj.toString());
+            } else if(clazz.equals(EstadoProductoEnum.class)){
+                return (T) EstadoProductoEnum.valueOf(obj.toString());
             }
         } catch (ClassCastException e) {
             throw new ClassCastException("Error de conversión de tipos");
