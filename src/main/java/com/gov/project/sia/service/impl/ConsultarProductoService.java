@@ -36,7 +36,6 @@ public class ConsultarProductoService implements IConsultarProductoService {
                 numeros.add(i);
             }
             Collections.shuffle(numeros);
-            log.error(numeros);
             int indice = 0;
             for(Integer numero : numeros){
                 orquestadorDto.insertar(listaRespuesta.get(indice), ProductoRespuestaDto.class, numero);
