@@ -1,11 +1,9 @@
 package com.gov.project.sia.entity;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 @Getter
 @Setter
@@ -14,15 +12,14 @@ import lombok.Setter;
 public class VentaProductoEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_venta_producto")
     private Integer idVentaProducto;
 
-    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_producto_fk", nullable = false)
     private ProductoEntity idProductoFk;
 
-    @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_venta_fk", nullable = false)
     private VentaEntity idVentaFk;

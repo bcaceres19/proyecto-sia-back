@@ -9,4 +9,6 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
 
     Boolean existsByEmailAndContraseina(String email, String password);
 
+    UsuarioEntity findByEmailAndContraseina(String emal, String password);
+
 }

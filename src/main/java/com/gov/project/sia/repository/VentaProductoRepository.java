@@ -28,9 +28,10 @@ public interface VentaProductoRepository extends JpaRepository<VentaProductoEnti
     """)
     List<VentaProductoDto> buscarVentasNuevasUsuario(@Param("idUsuario") Integer idUsuario);
 
-
     @Query(value = """
-        select
+
+
+            select
                     p.codigo_producto,
                     p.fecha_vencimiento_producto,
                     p.precio_producto,
@@ -38,13 +39,14 @@ public interface VentaProductoRepository extends JpaRepository<VentaProductoEnti
                     i.nombre_producto_inventario,
                     i.stock_producto_inventario,
                     i.precio_producto_inventario
-                from sia.venta_producto vp
+                from sia.pedido pe inner join sia.venta_producto vp on pe.id_venta_fk = vp.id_venta_fk\s
                 inner join sia.producto p
                 ON vp.id_producto_fk = p.codigo_producto inner join
-               sia.inventario i on p.id_inventario_fk = i.id_inventario;
+               sia.inventario i on p.id_inventario_fk = i.id_inventario
+               where pe.codigo_pedido  = :codigoPedido
         
     """, nativeQuery = true)
-    List<Object[]> buscarProductosVentas(@Param("codigoProducto") String codigoProducto);
+    List<Object[]> buscarProductosVentas(@Param("codigoPedido") String  codigoPedido);
 
     @Query("""
         SELECT new com.gov.project.sia.dto.VentaProductoDto(
@@ -57,5 +59,9 @@ public interface VentaProductoRepository extends JpaRepository<VentaProductoEnti
           order by i.idVenta asc
     """)
     List<VentaProductoDto> buscarVentasPendientesRevisionUsuario(@Param("idUsuario") Integer idUsuario);
+
+    Integer deleteByIdVentaProducto(Integer idVentaProducto);
+
+    VentaProductoEntity findByIdVentaProducto(Integer idVentaProducto);
 
 }

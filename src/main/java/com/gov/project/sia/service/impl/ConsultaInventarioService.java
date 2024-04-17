@@ -28,7 +28,7 @@ public class ConsultaInventarioService implements IConsultaInventarioService {
         List<InventarioDto> listaInventario = inventarioRepository.consultarProductosInventario().stream().map(inventarioMapper::objectToInventarioDto).toList();
         if(!listaInventario.isEmpty()){
             OrquestadorDto orquestadorDto = new OrquestadorDto();
-            listaInventario.forEach(i -> orquestadorDto.insertar(i, InventarioDto.class));
+            listaInventario.forEach(i -> orquestadorDto.insertar(i, InventarioDto.class, null));
             List<Object> orquestadorDtos = new ArrayList<>();
             orquestadorDto.disparadorOrdenamiento(tipoOrdenamiento,orquestadorDtos);
             List<InventarioDto> resultado = orquestadorDtos.stream().map(inventarioMapper::objectToInventarioDto).toList();

@@ -1,8 +1,7 @@
-package com.gov.project.sia.controller;
+package com.gov.project.sia.controllers;
 
 import com.gov.project.sia.dto.InventarioDto;
 import com.gov.project.sia.service.IConsultaInventarioService;
-import com.gov.project.sia.service.IConsultarProductoService;
 import com.gov.project.sia.utils.enums.TipoOrdenamientoEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

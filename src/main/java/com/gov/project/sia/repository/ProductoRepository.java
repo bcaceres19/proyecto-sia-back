@@ -1,5 +1,6 @@
 package com.gov.project.sia.repository;
 
+import com.gov.project.sia.dto.ProductoDto;
 import com.gov.project.sia.entity.ProductoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,5 +23,8 @@ public interface ProductoRepository extends JpaRepository<ProductoEntity,String>
             sia.inventario i on p.id_inventario_fk  = i.id_inventario;
     """, nativeQuery = true)
     List<Object[]> buscarProductos();
+
+    ProductoEntity findByCodigoProducto(String codigoProducto);
+
 
 }

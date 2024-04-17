@@ -5,6 +5,7 @@ import com.gov.project.sia.dto.VentaProductoDto;
 import com.gov.project.sia.dto.VentaProductoRespuestaDto;
 import com.gov.project.sia.entity.VentaEntity;
 import com.gov.project.sia.entity.VentaProductoEntity;
+import com.gov.project.sia.utils.helper.Funciones;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
@@ -25,5 +26,7 @@ public interface VentaProductoMapper {
         ventaProductoDto.getIdProductoFk().setPosicionInsercion(ventaProductoDto.getIdVentaProducto());
         ventaProductoRespuestaDto.add(ventaProductoDto.getIdProductoFk());
     }
+
+
 
 }

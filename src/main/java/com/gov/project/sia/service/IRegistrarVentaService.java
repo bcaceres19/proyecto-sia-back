@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface IRegistrarVentaService {
 
-    void crearVenta(VentaInDto ventaEntrada);
+    public void crearVenta(ProductoDto producto);
 
     void eliminarVenta(Integer idVenta);
 
-    void realizarVentaPedidoConfirmado(List<VentaDto> ventasConfirmar);
+    void realizarVentaPedidoConfirmado(VentaDto ventaConfirmada);
 
     void realizarVentaPedidoRechazado(List<VentaDto> ventasRechazar);
 

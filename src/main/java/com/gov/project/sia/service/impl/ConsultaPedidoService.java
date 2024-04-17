@@ -4,6 +4,7 @@ import com.gov.project.sia.dto.*;
 import com.gov.project.sia.repository.PedidoRepository;
 import com.gov.project.sia.repository.VentaProductoRepository;
 import com.gov.project.sia.service.IConsultaPedidoService;
+import com.gov.project.sia.utils.enums.EstadoPedidoEnum;
 import com.gov.project.sia.utils.mapper.PedidoMapper;
 import com.gov.project.sia.utils.mapper.ProductoMapper;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,11 @@ public class ConsultaPedidoService implements IConsultaPedidoService {
 
     @Override
     public List<RespuestaPedidoDto> buscarPedidosEstadoPendientes() {
-        return organizarCola(pedidoRepository.buscarPedidosPendientes());
+        return organizarCola(pedidoRepository.buscarPedidosPendientes(EstadoPedidoEnum.P));
+    }
+
+    @Override
+    public List<FacturacionDto> buscarPedidosCompletadosUsuario(Integer idUsuario) {
+        return pedidoRepository.buscarPedidosCompletados(idUsuario).stream().map(pedidoMapper::objectToFacturacionDto).toList();
     }
 }

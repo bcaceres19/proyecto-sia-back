@@ -1,6 +1,7 @@
-package com.gov.project.sia.controller;
+package com.gov.project.sia.controllers;
 
 import com.gov.project.sia.dto.*;
+import com.gov.project.sia.service.IAccionesProductoService;
 import com.gov.project.sia.service.IConsultaVentaProductoService;
 import com.gov.project.sia.service.IRegistrarVentaService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.List;
 public class VentaController {
     private final IConsultaVentaProductoService iConsultaVentaProductoService;
     private final IRegistrarVentaService iRegistrarVentaService;
-
+    private final IAccionesProductoService iAccionesProductoService;
    @GetMapping("/consultar-sin-confirmar")
     public ResponseEntity<RespuestaGeneralDto> consultarVentasSinConfirmar(@RequestParam("idUsuario") Integer idUsuario){
        RespuestaGeneralDto respuesta = new RespuestaGeneralDto();
@@ -31,14 +32,14 @@ public class VentaController {
     }
 
     @PostMapping("/crear-venta-sin-pedido")
-    public ResponseEntity<Boolean> crearVenta(@RequestBody VentaInDto ventaInDto){
-        iRegistrarVentaService.crearVenta(ventaInDto);
+    public ResponseEntity<Boolean> crearVenta(@RequestBody ProductoDto productoDto ){
+        iRegistrarVentaService.crearVenta(productoDto);
         return  ResponseEntity.ok(true);
     }
 
     @PostMapping("/crear-venta-con-pedido")
-    public ResponseEntity<Boolean> crearVentaConPedido(@RequestBody List<VentaDto> ventaDtos){
-        iRegistrarVentaService.realizarVentaPedidoConfirmado(ventaDtos);
+    public ResponseEntity<Boolean> crearVentaConPedido(@RequestBody VentaDto ventaConfirmada){
+        iRegistrarVentaService.realizarVentaPedidoConfirmado(ventaConfirmada);
         return  ResponseEntity.ok(true);
     }
     @PostMapping("/eliminar-venta")
@@ -53,4 +54,9 @@ public class VentaController {
         return  ResponseEntity.ok(true);
     }
 
+    @PostMapping("/eliminar-producto-venta")
+    public ResponseEntity<Boolean> eliminarProductoVenta(@RequestParam Integer idVentaProducto){
+        iAccionesProductoService.eliminarProductoVenta(idVentaProducto);
+        return  ResponseEntity.ok(true);
+    }
 }

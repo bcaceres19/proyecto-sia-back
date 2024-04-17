@@ -1,4 +1,4 @@
-package com.gov.project.sia.controller;
+package com.gov.project.sia.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

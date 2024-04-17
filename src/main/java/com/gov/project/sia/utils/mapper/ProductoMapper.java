@@ -38,6 +38,10 @@ public interface ProductoMapper {
         return productoRespuestaDto;
     }
 
+    default ProductoRespuestaDto objectToProducto(Object object){
+            return (ProductoRespuestaDto) object;
+    }
+
     default ProductoInventarioDto objectToProductoInventario(Object[] objeto){
         ProductoInventarioDto productoInventarioDto = new ProductoInventarioDto();
         productoInventarioDto.setCodigoProducto(Funciones.checkType(objeto[0], String.class));

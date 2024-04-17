@@ -19,12 +19,16 @@ public class OrquestadorDto {
         this.inicial = null;
     }
 
-    public <T> void insertar(Object objeto, Class<T> clazz){
+    public <T> void insertar(Object objeto, Class<T> clazz, Integer indice){
         try{
             if(clazz.equals(InventarioDto.class)){
                 InventarioDto inventarioDto = (InventarioDto) objeto;
                 addData(inventarioDto.getIdInventario(),inventarioDto);
-            }else if(clazz.equals(Integer.class)){
+            }else if(clazz.equals(ProductoRespuestaDto.class)){
+                ProductoRespuestaDto productoRespuestaDto = (ProductoRespuestaDto) objeto;
+                addData(indice, objeto);
+            }
+            else if(clazz.equals(Integer.class)){
                 addData((Integer) objeto, null) ;
             }
         }catch (ClassCastException ex){
