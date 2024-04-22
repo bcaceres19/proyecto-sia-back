@@ -1,8 +1,10 @@
 package com.gov.project.sia.repository;
 
+import com.gov.project.sia.dto.InventarioRespuestaDto;
 import com.gov.project.sia.entity.InventarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,13 +13,26 @@ import java.util.List;
 public interface InventarioRepository extends JpaRepository<InventarioEntity, Integer> {
 
     @Query(value = """
-        SELECT i.id_inventario, 
-        i.precio_producto_inventario, 
-        i.stock_producto_inventario,
-        i.nombre_producto_inventario,
-        tp.nombre_tipo_producto from sia.inventario i inner join 
-        sia.tipo_producto tp ON i.id_tipo_producto_fk = tp.id_tipo_producto ORDER BY RANDOM();
+            select i.id_inventario, 
+                   i.nombre_producto_inventario, 
+                   i.url_imagen_producto  from sia.inventario i;
     """, nativeQuery = true)
-    List<Object[]> consultarProductosInventario();
+    List<Object[]> buscarInventario();
 
+    @Query(value = """
+        SELECT NEW com.gov.project.sia.dto.InventarioRespuestaDto(i.idInventario, i.nombreProductoInventario, i.urlImagenProducto) 
+        FROM InventarioEntity i where i.nombreProductoInventario LIKE %:nombre%
+    """)
+    List<InventarioRespuestaDto> buscarInventarioNombre(@Param("nombre")String nombre);
+
+    @Query(value = """
+        select p.codigo_producto,
+               p.estado_producto, 
+               p.precio_producto, 
+               p.fecha_vencimiento_producto from sia.producto p where p.precio_producto in (
+    	select p.precio_producto from sia.inventario i inner join sia.producto p on i.id_inventario  = p.id_inventario_fk
+    	where i.id_inventario = :idInventario group by p.precio_producto order by count(p.precio_producto) desc limit 1
+        ) limit 1
+    """,nativeQuery = true)
+    List<Object[]> buscarDetalleInventario(@Param("idInventario") Integer idInventario);
 }

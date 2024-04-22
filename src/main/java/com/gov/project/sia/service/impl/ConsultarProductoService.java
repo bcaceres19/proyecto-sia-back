@@ -2,7 +2,6 @@ package com.gov.project.sia.service.impl;
 
 import com.gov.project.sia.dto.InventarioDto;
 import com.gov.project.sia.dto.OrquestadorDto;
-import com.gov.project.sia.dto.ProductoDto;
 import com.gov.project.sia.dto.ProductoRespuestaDto;
 import com.gov.project.sia.repository.ProductoRepository;
 import com.gov.project.sia.service.IConsultarProductoService;
@@ -13,8 +12,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -26,28 +23,17 @@ public class ConsultarProductoService implements IConsultarProductoService {
 
     private final ProductoMapper productoMapper;
 
+
     @Override
-    public List<ProductoRespuestaDto> consultarProductos(TipoOrdenamientoEnum tipoOrdenamientoEnum) {
-        List<ProductoRespuestaDto> listaRespuesta = productoRepository.buscarProductos().stream().map(productoMapper::objetctToProductoRespuesta).toList();
-        if(!listaRespuesta.isEmpty()){
+    public List<ProductoRespuestaDto> buscarProductosInventario(TipoOrdenamientoEnum tipoOrdenamiento, Long idInventario) {
+        List<ProductoRespuestaDto> listaInventario = productoRepository.consultarProductosInventario(idInventario).stream().map(productoMapper::objectToProductoRespuestaDto).toList();
+        if(!listaInventario.isEmpty()){
             OrquestadorDto orquestadorDto = new OrquestadorDto();
-            List<Integer> numeros = new ArrayList<>();
-            for(int i = 1; i<= listaRespuesta.size(); i++){
-                numeros.add(i);
-            }
-            Collections.shuffle(numeros);
-            int indice = 0;
-            for(Integer numero : numeros){
-                orquestadorDto.insertar(listaRespuesta.get(indice), ProductoRespuestaDto.class, numero);
-                indice++;
-            }
+            listaInventario.forEach(i -> orquestadorDto.insertar(i, ProductoRespuestaDto.class));
             List<Object> orquestadorDtos = new ArrayList<>();
-            orquestadorDto.disparadorOrdenamiento(tipoOrdenamientoEnum,orquestadorDtos);
-            List<ProductoRespuestaDto> resultado = orquestadorDtos.stream().map(productoMapper::objectToProducto).toList();
-            return resultado;
+            orquestadorDto.disparadorOrdenamiento(tipoOrdenamiento,orquestadorDtos);
+            return  orquestadorDtos.stream().map(productoMapper::objectToInventarioDto).toList();
         }
-        return listaRespuesta;
+        return null;
     }
-
-
 }
