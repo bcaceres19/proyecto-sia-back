@@ -1,7 +1,6 @@
-package com.gov.project.sia.service;
+package com.gov.project.sia.service.output;
 
 import com.gov.project.sia.dto.FacturacionDto;
-import com.gov.project.sia.dto.PedidoDto;
 import com.gov.project.sia.dto.RespuestaPedidoDto;
 
 import java.util.List;

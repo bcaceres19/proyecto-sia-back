@@ -2,6 +2,8 @@ package com.gov.project.sia.dto;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class InventarioDto {
 
@@ -16,5 +18,9 @@ public class InventarioDto {
     private TipoProductoDto idTipoProductoFk;
 
     private String urlImagenProducto;
+
+    private Integer porcentajeAumentoPrecio;
+
+    private LocalDate fechaVencimiento;
 
 }

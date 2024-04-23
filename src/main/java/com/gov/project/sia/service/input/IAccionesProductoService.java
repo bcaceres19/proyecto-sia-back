@@ -1,4 +1,4 @@
-package com.gov.project.sia.service;
+package com.gov.project.sia.service.input;
 
 public interface IAccionesProductoService {
 

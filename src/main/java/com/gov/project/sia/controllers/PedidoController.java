@@ -2,11 +2,10 @@ package com.gov.project.sia.controllers;
 
 
 import com.gov.project.sia.dto.PedidoDto;
-import com.gov.project.sia.dto.ReportePedidosDto;
 import com.gov.project.sia.dto.RespuestaGeneralDto;
-import com.gov.project.sia.service.IConsultaPedidoService;
-import com.gov.project.sia.service.IGenerarReporteService;
-import com.gov.project.sia.service.IRegistrarPedidoService;
+import com.gov.project.sia.service.output.IConsultaPedidoService;
+import com.gov.project.sia.service.input.IGenerarReporteService;
+import com.gov.project.sia.service.input.IRegistrarPedidoService;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.http.ResponseEntity;

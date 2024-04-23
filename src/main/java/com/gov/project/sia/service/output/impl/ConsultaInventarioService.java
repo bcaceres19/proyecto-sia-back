@@ -1,12 +1,10 @@
-package com.gov.project.sia.service.impl;
+package com.gov.project.sia.service.output.impl;
 
-import com.gov.project.sia.dto.InventarioDto;
 import com.gov.project.sia.dto.InventarioRespuestaDto;
 import com.gov.project.sia.dto.OrquestadorDto;
 import com.gov.project.sia.repository.InventarioRepository;
-import com.gov.project.sia.service.IConsultaInventarioService;
+import com.gov.project.sia.service.output.IConsultaInventarioService;
 import com.gov.project.sia.utils.enums.TipoOrdenamientoEnum;
-import com.gov.project.sia.utils.helper.Funciones;
 import com.gov.project.sia.utils.mapper.InventarioMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

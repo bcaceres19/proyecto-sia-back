@@ -1,9 +1,7 @@
-package com.gov.project.sia.service;
+package com.gov.project.sia.service.input;
 
 import com.gov.project.sia.dto.ProductoDto;
-import com.gov.project.sia.dto.UsuarioDto;
 import com.gov.project.sia.dto.VentaDto;
-import com.gov.project.sia.dto.VentaInDto;
 
 import java.util.List;
 

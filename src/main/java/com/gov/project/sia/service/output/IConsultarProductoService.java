@@ -1,6 +1,5 @@
-package com.gov.project.sia.service;
+package com.gov.project.sia.service.output;
 
-import com.gov.project.sia.dto.InventarioDto;
 import com.gov.project.sia.dto.ProductoRespuestaDto;
 import com.gov.project.sia.utils.enums.TipoOrdenamientoEnum;
 

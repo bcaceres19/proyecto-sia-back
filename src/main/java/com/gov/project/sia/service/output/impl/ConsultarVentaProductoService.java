@@ -1,12 +1,10 @@
-package com.gov.project.sia.service.impl;
+package com.gov.project.sia.service.output.impl;
 
 import com.gov.project.sia.dto.OrquestadorPilaDto;
-import com.gov.project.sia.dto.VentaDto;
 import com.gov.project.sia.dto.VentaProductoDto;
 import com.gov.project.sia.dto.VentaProductoRespuestaDto;
 import com.gov.project.sia.repository.VentaProductoRepository;
-import com.gov.project.sia.service.IConsultaVentaProductoService;
-import com.gov.project.sia.utils.enums.EstadoVentaEnum;
+import com.gov.project.sia.service.output.IConsultaVentaProductoService;
 import com.gov.project.sia.utils.mapper.VentaProductoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

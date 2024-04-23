@@ -1,10 +1,10 @@
-package com.gov.project.sia.service.impl;
+package com.gov.project.sia.service.input.impl;
 
 import com.gov.project.sia.dto.VentaDto;
 import com.gov.project.sia.dto.VentaProductoDto;
 import com.gov.project.sia.repository.VentaProductoRepository;
 import com.gov.project.sia.repository.VentaRepository;
-import com.gov.project.sia.service.IAccionesProductoService;
+import com.gov.project.sia.service.input.IAccionesProductoService;
 import com.gov.project.sia.utils.mapper.VentaMapper;
 import com.gov.project.sia.utils.mapper.VentaProductoMapper;
 import jakarta.transaction.Transactional;

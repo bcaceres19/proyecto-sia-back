@@ -1,9 +1,7 @@
-package com.gov.project.sia.service;
+package com.gov.project.sia.service.input;
 
 import com.gov.project.sia.dto.PedidoDto;
 import com.gov.project.sia.dto.VentaDto;
-
-import java.util.List;
 
 public interface IRegistrarPedidoService {
 

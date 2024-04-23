@@ -29,5 +29,6 @@ public interface ProductoRepository extends JpaRepository<ProductoEntity,String>
 
     ProductoEntity findByCodigoProducto(String codigoProducto);
 
+    Boolean existsByCodigoProducto(String codigoProducto);
 
 }

@@ -1,9 +1,9 @@
 package com.gov.project.sia.controllers;
 
 import com.gov.project.sia.dto.*;
-import com.gov.project.sia.service.IAccionesProductoService;
-import com.gov.project.sia.service.IConsultaVentaProductoService;
-import com.gov.project.sia.service.IRegistrarVentaService;
+import com.gov.project.sia.service.input.IAccionesProductoService;
+import com.gov.project.sia.service.output.IConsultaVentaProductoService;
+import com.gov.project.sia.service.input.IRegistrarVentaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,8 +43,8 @@ public class VentaController {
         return  ResponseEntity.ok(true);
     }
     @PostMapping("/eliminar-venta")
-    public ResponseEntity<Boolean> eliminarVenta(@RequestParam Integer idVenta){
-        iRegistrarVentaService.eliminarVenta(idVenta);
+    public ResponseEntity<Boolean> eliminarVenta(@RequestParam("idVentaProducto") Integer idVentaProducto){
+        iRegistrarVentaService.eliminarVenta(idVentaProducto);
         return  ResponseEntity.ok(true);
     }
 

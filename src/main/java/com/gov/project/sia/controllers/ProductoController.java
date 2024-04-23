@@ -1,9 +1,7 @@
 package com.gov.project.sia.controllers;
 
-import com.gov.project.sia.dto.InventarioDto;
-import com.gov.project.sia.dto.ProductoRespuestaDto;
 import com.gov.project.sia.dto.RespuestaGeneralDto;
-import com.gov.project.sia.service.IConsultarProductoService;
+import com.gov.project.sia.service.output.IConsultarProductoService;
 import com.gov.project.sia.utils.enums.TipoOrdenamientoEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/producto")

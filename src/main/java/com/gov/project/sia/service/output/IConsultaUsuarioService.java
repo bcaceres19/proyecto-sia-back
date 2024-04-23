@@ -1,4 +1,4 @@
-package com.gov.project.sia.service;
+package com.gov.project.sia.service.output;
 
 import com.gov.project.sia.dto.UsuarioDto;
 import com.gov.project.sia.utils.exceptions.ErrorGeneralException;

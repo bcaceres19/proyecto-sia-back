@@ -1,10 +1,9 @@
-package com.gov.project.sia.service.impl;
+package com.gov.project.sia.service.output.impl;
 
-import com.gov.project.sia.dto.InventarioDto;
 import com.gov.project.sia.dto.OrquestadorDto;
 import com.gov.project.sia.dto.ProductoRespuestaDto;
 import com.gov.project.sia.repository.ProductoRepository;
-import com.gov.project.sia.service.IConsultarProductoService;
+import com.gov.project.sia.service.output.IConsultarProductoService;
 import com.gov.project.sia.utils.enums.TipoOrdenamientoEnum;
 import com.gov.project.sia.utils.mapper.ProductoMapper;
 import lombok.RequiredArgsConstructor;

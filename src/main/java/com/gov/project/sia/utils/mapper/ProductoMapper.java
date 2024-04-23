@@ -13,6 +13,8 @@ public interface ProductoMapper {
 
     ProductoDto productoEntityToProductoDto(ProductoEntity productoEntity);
 
+    ProductoEntity dtoToEntity(ProductoDto producto);
+
     default ProductoDto objectToProducto(Object[] objeto){
         ProductoDto productoDto = new ProductoDto();
         productoDto.setCodigoProducto(Funciones.checkType(objeto[0], String.class));

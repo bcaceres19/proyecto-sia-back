@@ -1,10 +1,10 @@
-package com.gov.project.sia.service.impl;
+package com.gov.project.sia.service.input.impl;
 
 import com.gov.project.sia.dto.*;
 import com.gov.project.sia.repository.ProductoRepository;
 import com.gov.project.sia.repository.VentaProductoRepository;
 import com.gov.project.sia.repository.VentaRepository;
-import com.gov.project.sia.service.IRegistrarVentaService;
+import com.gov.project.sia.service.input.IRegistrarVentaService;
 import com.gov.project.sia.utils.mapper.ProductoMapper;
 import com.gov.project.sia.utils.mapper.VentaMapper;
 import com.gov.project.sia.utils.mapper.VentaProductoMapper;

@@ -1,14 +1,12 @@
-package com.gov.project.sia.service.impl;
+package com.gov.project.sia.service.output.impl;
 
 import com.gov.project.sia.dto.UsuarioDto;
-import com.gov.project.sia.entity.UsuarioEntity;
 import com.gov.project.sia.repository.UsuarioRepository;
-import com.gov.project.sia.service.IConsultaUsuarioService;
+import com.gov.project.sia.service.output.IConsultaUsuarioService;
 import com.gov.project.sia.utils.exceptions.ErrorGeneralException;
 import com.gov.project.sia.utils.helper.Constantes;
 import com.gov.project.sia.utils.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

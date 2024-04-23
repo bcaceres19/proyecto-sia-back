@@ -1,10 +1,10 @@
-package com.gov.project.sia.service.impl;
+package com.gov.project.sia.service.input.impl;
 
 import com.gov.project.sia.dto.PedidoDto;
 import com.gov.project.sia.dto.VentaDto;
 import com.gov.project.sia.repository.PedidoRepository;
 import com.gov.project.sia.repository.VentaRepository;
-import com.gov.project.sia.service.IRegistrarPedidoService;
+import com.gov.project.sia.service.input.IRegistrarPedidoService;
 import com.gov.project.sia.utils.enums.EstadoVentaEnum;
 import com.gov.project.sia.utils.mapper.PedidoMapper;
 import com.gov.project.sia.utils.mapper.VentaMapper;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;
-import java.util.List;
 
 
 import static com.gov.project.sia.utils.enums.EstadoPedidoEnum.*;
