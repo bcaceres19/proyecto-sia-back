@@ -22,4 +22,9 @@ public class InventarioRespuestaDto {
         this.nombreProducto = nombreProducto;
         this.imagenProducto = imagenProducto;
     }
+
+    public InventarioRespuestaDto(Integer idInventario, String nombreProducto) {
+        this.idInventario = idInventario;
+        this.nombreProducto = nombreProducto;
+    }
 }

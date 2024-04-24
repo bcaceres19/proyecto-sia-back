@@ -33,4 +33,23 @@ public class ListasController {
         return  ResponseEntity.ok(respuesta);
     }
 
+    @GetMapping("/consultar-tipos-inventarios")
+    public ResponseEntity<RespuestaGeneralDto> consultarTiposInventario(){
+        RespuestaGeneralDto respuesta = new RespuestaGeneralDto();
+        respuesta.setStatus(Boolean.TRUE);
+        respuesta.setListaData(iConsultaListasService.consultarTiposInventarios());
+        respuesta.setMensaje("Se consulto correctamente");
+        return  ResponseEntity.ok(respuesta);
+    }
+
+
+    @GetMapping("/consultar-estados-productos")
+    public ResponseEntity<RespuestaGeneralDto> consultarEstadosProductos(){
+        RespuestaGeneralDto respuesta = new RespuestaGeneralDto();
+        respuesta.setStatus(Boolean.TRUE);
+        respuesta.setListaData(iConsultaListasService.consultarEstadoProductos());
+        respuesta.setMensaje("Se consulto correctamente");
+        return  ResponseEntity.ok(respuesta);
+    }
+
 }

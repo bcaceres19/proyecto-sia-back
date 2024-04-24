@@ -5,7 +5,8 @@ public enum EstadoPedidoEnum {
     A("ACEPTADO"),
     P("PENDIENTE"),
     V("VENCIDO"),
-    R("RECHAZADO");
+    R("RECHAZADO"),
+    EU("ELIMINADO_USUARIO");
 
     private final String descripcion;
 

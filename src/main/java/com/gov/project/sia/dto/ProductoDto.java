@@ -22,7 +22,6 @@ public class ProductoDto {
 
     private Integer posicionInsercion;
 
-
     private Integer idUsuarioInsercion;
 
 }

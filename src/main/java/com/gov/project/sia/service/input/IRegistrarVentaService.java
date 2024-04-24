@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IRegistrarVentaService {
 
-    public void crearVenta(ProductoDto producto);
+     void crearVenta(ProductoDto producto);
 
     void eliminarVenta(Integer idVenta);
 

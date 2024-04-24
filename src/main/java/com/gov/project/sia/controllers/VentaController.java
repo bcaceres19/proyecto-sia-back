@@ -55,7 +55,7 @@ public class VentaController {
     }
 
     @PostMapping("/eliminar-producto-venta")
-    public ResponseEntity<Boolean> eliminarProductoVenta(@RequestParam Integer idVentaProducto){
+    public ResponseEntity<Boolean> eliminarProductoVenta(@RequestParam("idVentaProducto") Integer idVentaProducto){
         iAccionesProductoService.eliminarProductoVenta(idVentaProducto);
         return  ResponseEntity.ok(true);
     }

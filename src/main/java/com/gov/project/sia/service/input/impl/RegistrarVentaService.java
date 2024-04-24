@@ -33,7 +33,7 @@ public class RegistrarVentaService implements IRegistrarVentaService {
 
     private  final ProductoMapper productoMapper;
 
-    private  final RegitrarPedidoService regitrarPedidoService;
+    private  final AccionesPedidoService accionesPedidoService;
 
     @Override
     @Transactional
@@ -75,7 +75,7 @@ public class RegistrarVentaService implements IRegistrarVentaService {
         VentaDto ventaDto = ventaMapper.VentaEntityToVentaDto(ventaRepository.findByIdVenta(ventaConfirmada.getIdVenta()));
         ventaDto.setEstadoVenta(T);
         ventaRepository.save(ventaMapper.ventaDtoToVentaEntity(ventaDto));
-        regitrarPedidoService.iniciarPedido(ventaDto);
+        accionesPedidoService.iniciarPedido(ventaDto);
     }
 
     @Override

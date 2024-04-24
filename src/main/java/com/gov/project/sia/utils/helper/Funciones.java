@@ -41,6 +41,10 @@ public class Funciones {
         }
         return null;
     }
+    public static Double calcularPrecio(Integer porcentaje, Double precioBase){
+        Double precioPorcentaje  =(precioBase * porcentaje) / 100.0;
+        return precioBase + precioPorcentaje;
+    }
 
     public static LocalDate convertStringToLocalDate(String valor){
         return valor != null ?  LocalDate.parse(valor, DateTimeFormatter.ISO_DATE) : null;

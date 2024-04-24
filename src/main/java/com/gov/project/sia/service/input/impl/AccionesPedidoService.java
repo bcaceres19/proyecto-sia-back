@@ -4,7 +4,8 @@ import com.gov.project.sia.dto.PedidoDto;
 import com.gov.project.sia.dto.VentaDto;
 import com.gov.project.sia.repository.PedidoRepository;
 import com.gov.project.sia.repository.VentaRepository;
-import com.gov.project.sia.service.input.IRegistrarPedidoService;
+import com.gov.project.sia.service.input.IAccionesPedidoService;
+import com.gov.project.sia.utils.enums.EstadoPedidoEnum;
 import com.gov.project.sia.utils.enums.EstadoVentaEnum;
 import com.gov.project.sia.utils.mapper.PedidoMapper;
 import com.gov.project.sia.utils.mapper.VentaMapper;
@@ -21,7 +22,7 @@ import static com.gov.project.sia.utils.helper.Constantes.*;
 
 @Service
 @RequiredArgsConstructor
- public class RegitrarPedidoService implements IRegistrarPedidoService {
+ public class AccionesPedidoService implements IAccionesPedidoService {
 
     private final PedidoRepository pedidoRepository;
 
@@ -72,6 +73,13 @@ import static com.gov.project.sia.utils.helper.Constantes.*;
         pedidoDto.setIdUsuarioFk(venta.getIdUsuarioFk());
         pedidoDto.setIdVentaFk(venta);
         pedidoRepository.save(pedidoMapper.pedidoDtoToPedidoEntity(pedidoDto));
+    }
+
+    @Override
+    public void cambiarEstado(String codigoPedido, String estado) {
+        PedidoDto pedido = pedidoMapper.entityTODto(pedidoRepository.findByCodigoPedido(codigoPedido));
+        pedido.setEstadoPedido(EstadoPedidoEnum.valueOf(estado));
+        pedidoRepository.save(pedidoMapper.pedidoDtoToPedidoEntity(pedido));
     }
 
     private String generarCodigo(){

@@ -1,6 +1,7 @@
 package com.gov.project.sia.service.input.impl;
 
 import com.gov.project.sia.dto.InventarioDto;
+import com.gov.project.sia.dto.InventarioRespuestaDto;
 import com.gov.project.sia.dto.ProductoDto;
 import com.gov.project.sia.repository.InventarioRepository;
 import com.gov.project.sia.repository.ProductoRepository;
@@ -15,9 +16,11 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;
+import java.util.List;
 
 import static com.gov.project.sia.utils.helper.Constantes.*;
 import static com.gov.project.sia.utils.helper.Constantes.CHARACTERS;
+import static com.gov.project.sia.utils.helper.Funciones.calcularPrecio;
 
 @Service
 @RequiredArgsConstructor
@@ -40,6 +43,12 @@ public class InventarioInputService implements IInventarioInputService  {
             log.error(ex);
             throw new ErrorGeneralException(ERROR_GENERAL);
         }
+    }
+
+    @Override
+    public Boolean verificarCreacionInventario(String nombreProducto) {
+        List<InventarioRespuestaDto> existe = inventarioRepository.buscarInventarioNombre(nombreProducto);
+        return !existe.isEmpty();
     }
 
     private void crearProductos(Integer porcentage,
@@ -73,8 +82,5 @@ public class InventarioInputService implements IInventarioInputService  {
         return codigo.toString();
     }
 
-    private Double calcularPrecio(Integer porcentaje, Double precioBase){
-        Double precioPorcentaje  =(precioBase * porcentaje) / 100.0;
-        return precioBase + precioPorcentaje;
-    }
+
 }

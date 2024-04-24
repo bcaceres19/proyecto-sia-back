@@ -44,6 +44,19 @@ public class InventarioController {
         return ResponseEntity.ok(respuesta);
     }
 
+    @GetMapping("/verificar-creacion-inventario")
+    public ResponseEntity<RespuestaGeneralDto> verificarCreacionInventario(
+            @RequestParam("nombreInventario") String nombreInventario
+    ){
+        RespuestaGeneralDto respuesta = new RespuestaGeneralDto();
+        respuesta.setStatus(Boolean.TRUE);
+        respuesta.setData(iInventarioInputService.verificarCreacionInventario(nombreInventario));
+        respuesta.setMensaje("Se valido correctamente");
+        return ResponseEntity.ok(respuesta);
+    }
+
+
+
     @PostMapping("/crear")
     public ResponseEntity<RespuestaGeneralDto> crearInventario(@RequestBody InventarioDto inventario) throws ErrorGeneralException {
         RespuestaGeneralDto respuesta = new RespuestaGeneralDto();

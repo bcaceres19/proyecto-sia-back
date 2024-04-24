@@ -9,6 +9,6 @@ public interface IConsultaPedidoService {
 
     List<RespuestaPedidoDto> buscarPedidosEstadoPendientes();
 
-    List<FacturacionDto> buscarPedidosCompletadosUsuario(Integer idUsuario);
+    List<FacturacionDto> buscarPedidosCompletadosUsuario(Integer idUsuario, String tipo);
 
 }

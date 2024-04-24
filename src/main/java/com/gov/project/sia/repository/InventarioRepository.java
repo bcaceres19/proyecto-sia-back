@@ -21,9 +21,15 @@ public interface InventarioRepository extends JpaRepository<InventarioEntity, In
 
     @Query(value = """
         SELECT NEW com.gov.project.sia.dto.InventarioRespuestaDto(i.idInventario, i.nombreProductoInventario, i.urlImagenProducto) 
-        FROM InventarioEntity i where i.nombreProductoInventario LIKE %:nombre%
+        FROM InventarioEntity i where LOWER(i.nombreProductoInventario) LIKE LOWER(CONCAT('%', :nombre, '%'))
     """)
     List<InventarioRespuestaDto> buscarInventarioNombre(@Param("nombre")String nombre);
+
+    @Query(value = """
+            SELECT NEW com.gov.project.sia.dto.InventarioRespuestaDto(i.idInventario, i.nombreProductoInventario) 
+            FROM InventarioEntity i
+    """)
+    List<InventarioRespuestaDto> consultarTiposInventario();
 
     @Query(value = """
         select p.codigo_producto,
@@ -35,4 +41,5 @@ public interface InventarioRepository extends JpaRepository<InventarioEntity, In
         ) limit 1
     """,nativeQuery = true)
     List<Object[]> buscarDetalleInventario(@Param("idInventario") Integer idInventario);
+
 }

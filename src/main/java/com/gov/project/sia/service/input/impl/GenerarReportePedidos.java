@@ -48,7 +48,7 @@ public class GenerarReportePedidos implements IGenerarReporteService {
 
     @Override
     public String generarReportePedidos(String codigoPedido) throws JRException, FileNotFoundException {
-       ReportePedidosDto dataReporte = pedidoRepository.buscarDataRepore(codigoPedido).stream().map(pedidoMapper::objectToReportePedidoDto).toList().get(0);
+       ReportePedidosDto dataReporte = pedidoRepository.buscarDataReporte(codigoPedido).stream().map(pedidoMapper::objectToReportePedidoDto).toList().get(0);
        dataReporte.setDataSource(pedidoRepository.buscarDataSubReporte(codigoPedido).stream().map(pedidoMapper::objectToReportePedidosSubInfoDto).toList());
        return armarPdf(dataReporte);
     }

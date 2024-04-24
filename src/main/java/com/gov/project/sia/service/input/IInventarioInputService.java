@@ -7,4 +7,6 @@ public interface IInventarioInputService {
 
     void crearInventarioProducto(InventarioDto inventario) throws ErrorGeneralException;
 
+    Boolean verificarCreacionInventario(String nombreProducto);
+
 }

@@ -3,7 +3,7 @@ package com.gov.project.sia.service.input;
 import com.gov.project.sia.dto.PedidoDto;
 import com.gov.project.sia.dto.VentaDto;
 
-public interface IRegistrarPedidoService {
+public interface IAccionesPedidoService {
 
     Boolean aceptarPedido(PedidoDto pedidos);
 
@@ -11,4 +11,5 @@ public interface IRegistrarPedidoService {
 
     void iniciarPedido(VentaDto venta);
 
+    void cambiarEstado(String codigoPedido, String estado);
 }

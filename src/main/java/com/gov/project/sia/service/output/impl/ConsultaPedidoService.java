@@ -44,7 +44,7 @@ public class ConsultaPedidoService implements IConsultaPedidoService {
     }
 
     @Override
-    public List<FacturacionDto> buscarPedidosCompletadosUsuario(Integer idUsuario) {
-        return pedidoRepository.buscarPedidosCompletados(idUsuario).stream().map(pedidoMapper::objectToFacturacionDto).toList();
+    public List<FacturacionDto> buscarPedidosCompletadosUsuario(Integer idUsuario, String tipo) {
+        return pedidoRepository.buscarPedidosCompletados(idUsuario, tipo).stream().map(pedidoMapper::objectToFacturacionDto).toList();
     }
 }
